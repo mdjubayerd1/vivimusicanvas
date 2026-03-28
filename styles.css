@@ -56,11 +56,63 @@ body {
     100% { transform: translate(15%, 15%) scale(1.1); }
 }
 
+/* Top Bar */
+.top-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 12, 16, 0.7);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 100;
+    padding: 0.75rem 0;
+}
+
+.top-bar-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.copyright {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dim);
+}
+
+.developer {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.vividh-name {
+    color: var(--accent);
+    font-weight: 700;
+}
+
 /* Layout */
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem 4rem 2rem;
 }
 
 header {

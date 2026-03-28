@@ -234,6 +234,11 @@
       "song": "Pal Pal",
       "artist": "Afusic",
       "url": "https://vivimusicanvas-q75m.vercel.app/Song/12palpal.mp4"
-    }
+    },
+    {
+      "song": "Finding Her",
+      "artist": "Bharath",
+      "url": "https://vivimusicanvas-q75m.vercel.app/Song/13-findingher.mp4"
+    } 
   ]
 }

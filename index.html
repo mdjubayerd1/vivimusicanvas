@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ViviMusic Custom Canvas Guide - Learn how to add and discover user-uploaded background videos for the ViviMusic App.">
+    <meta name="description"
+        content="ViviMusic Custom Canvas Guide - Learn how to add and discover user-uploaded background videos for the ViviMusic App.">
     <title>ViviMusic Canvas Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 </head>
+
 <body>
     <div class="background-blob"></div>
     <div class="background-blob secondary"></div>
-    
+
     <nav class="top-bar">
         <div class="top-bar-content">
             <div class="brand">
@@ -25,7 +28,7 @@
             </div>
         </div>
     </nav>
-    
+
     <main class="container">
         <header>
             <div class="repo-badge">
@@ -34,7 +37,8 @@
                 </a>
             </div>
             <h1 id="main-title">ViviMusic Canvas</h1>
-            <p>The ultimate hub for custom motion artwork. Personalize your music experience with beautiful, looping visuals.</p>
+            <p>The ultimate hub for custom motion artwork. Personalize your music experience with beautiful, looping
+                visuals.</p>
             <div class="cta-container" style="margin-top: 2.5rem;">
                 <a href="https://github.com/vivizzz007/vivimusicanvas" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> Contribute on GitHub
@@ -50,26 +54,28 @@
                     <span class="step-number">01</span>
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h3>Upload Video</h3>
-                    <p>Place your <code>.mp4</code> file in the <code>Song/</code> or <code>Album/</code> folder. 
-                    <br><br>
-                    <strong>Tip:</strong> Keep file sizes small (< 5MB) for instant loading.</p>
+                    <p>Place your <code>.m3u8</code> file in the <code>Song/</code> or <code>Album/</code> folder.
+                        <br><br>
+                        <strong>Tip:</strong> Keep file sizes small (< 5MB) for instant loading.</p>
                 </article>
 
                 <article class="step-card">
                     <span class="step-number">02</span>
                     <i class="fas fa-code"></i>
                     <h3>Update JSON</h3>
-                    <p>Add a new entry to <code>canvas.json</code> mapping the <strong>Song Title</strong> and <strong>Artist</strong> to your public URL.</p>
+                    <p>Add a new entry to <code>canvas.json</code> mapping the <strong>Song Title</strong> and
+                        <strong>Artist</strong> to your public URL.</p>
                 </article>
 
                 <article class="step-card">
                     <span class="step-number">03</span>
                     <i class="fas fa-mobile-alt"></i>
                     <h3>Enable in App</h3>
-                    <p>In ViviMusic settings, enable <strong>"Show motion artwork"</strong>. Play your song & enjoy the visuals!</p>
+                    <p>In ViviMusic settings, enable <strong>"Show motion artwork"</strong>. Play your song & enjoy the
+                        visuals!</p>
                 </article>
             </div>
-            
+
             <!-- Technical Requirements Box -->
             <div class="requirements-box">
                 <div class="req-header">
@@ -77,10 +83,13 @@
                     <h4>Technical Requirements</h4>
                 </div>
                 <ul class="req-list">
-                    <li><i class="fas fa-check"></i> <strong>Format:</strong> .mp4 files only.</li>
-                    <li><i class="fas fa-check"></i> <strong>Aspect Ratio:</strong> 9:16 (Vertical) is highly recommended.</li>
-                    <li><i class="fas fa-check"></i> <strong>File Size:</strong> Maximum <strong>5MB</strong> (smaller is better).</li>
-                    <li><i class="fas fa-check"></i> <strong>Looping:</strong> 5-20 seconds for seamless transition.</li>
+                    <li><i class="fas fa-check"></i> <strong>Format:</strong> .m3u8</li>
+                    <li><i class="fas fa-check"></i> <strong>Aspect Ratio:</strong> 9:16 (Vertical) is highly
+                        recommended.</li>
+                    <li><i class="fas fa-check"></i> <strong>File Size:</strong> Maximum <strong>5MB</strong> (smaller
+                        is better).</li>
+                    <li><i class="fas fa-check"></i> <strong>Looping:</strong> 5-20 seconds for seamless transition.
+                    </li>
                 </ul>
             </div>
         </section>
@@ -109,9 +118,11 @@
     </main>
 
     <footer>
-        <div class="container" style="padding-top: 2rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+        <div class="container"
+            style="padding-top: 2rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
             <p>VIVI MUSIC &copy; 2026. ALL RIGHTS RESERVED TO VIVI MUSIC.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Licensed under <a href="LICENSE" style="color: var(--accent); text-decoration: none;">GPL-3.0</a>.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">Licensed under <a href="LICENSE"
+                    style="color: var(--accent); text-decoration: none;">GPL-3.0</a>.</p>
         </div>
     </footer>
 
@@ -123,14 +134,14 @@
                 // Fetch with cache busting to ensure fresh data
                 const response = await fetch(`./canvas.json?v=${Date.now()}`);
                 if (!response.ok) throw new Error('Failed to load metadata');
-                
+
                 const data = await response.json();
                 allItems = data.items || [];
-                
+
                 // Initially show only the first 3 in gallery, all in list
                 renderGallery(allItems.slice(0, 3));
                 renderAvailability(allItems);
-                
+
                 document.getElementById('song-count').textContent = `${allItems.length} active canvases`;
             } catch (error) {
                 console.error(error);
@@ -145,9 +156,9 @@
 
         function renderGallery(items) {
             const grid = document.getElementById('canvas-grid');
-            grid.innerHTML = ''; 
+            grid.innerHTML = '';
 
-            if(items.length === 0) {
+            if (items.length === 0) {
                 grid.innerHTML = `
                     <p class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 4rem; opacity: 0.5;">
                         No matching songs found in the gallery.
@@ -161,7 +172,7 @@
                 card.className = 'canvas-card';
                 const isM3u8 = item.url && item.url.toLowerCase().endsWith('.m3u8');
                 const videoId = "vid_" + Math.random().toString(36).substr(2, 9) + "_" + index;
-                
+
                 card.innerHTML = `
                     <div class="video-preview">
                         <video id="${videoId}" loop muted playsinline onplay="this.volume=0" onmouseover="this.play()" onmouseout="this.pause()">
@@ -174,7 +185,7 @@
                     </div>
                 `;
                 grid.appendChild(card);
-                
+
                 if (isM3u8) {
                     const video = document.getElementById(videoId);
                     if (Hls.isSupported()) {
@@ -192,7 +203,7 @@
             const list = document.getElementById('availability-list');
             list.innerHTML = '';
 
-            if(items.length === 0) {
+            if (items.length === 0) {
                 list.innerHTML = `<p class="empty-state" style="padding: 2rem; opacity: 0.5;">No songs found.</p>`;
                 return;
             }
@@ -215,14 +226,14 @@
 
         document.getElementById('search-input').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            
+
             if (term.trim() === '') {
                 renderGallery(allItems.slice(0, 3));
                 renderAvailability(allItems);
                 document.getElementById('song-count').textContent = `${allItems.length} active canvases`;
             } else {
-                const filtered = allItems.filter(item => 
-                    item.song.toLowerCase().includes(term) || 
+                const filtered = allItems.filter(item =>
+                    item.song.toLowerCase().includes(term) ||
                     item.artist.toLowerCase().includes(term)
                 );
                 renderGallery(filtered);
@@ -234,4 +245,5 @@
         document.addEventListener('DOMContentLoaded', loadCanvases);
     </script>
 </body>
+
 </html>

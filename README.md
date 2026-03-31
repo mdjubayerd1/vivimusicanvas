@@ -2,15 +2,15 @@
 
 Implementing a new way to get beautiful custom canvas videos for the ViviMusic app!
 
-This repository acts as the central hub for mapping custom `.mp4` videos to specific songs or albums within ViviMusic. It is powered by Vercel, meaning any changes you push to this repository are instantly deployed and served via a lightning-fast global CDN. 
+This repository acts as the central hub for mapping custom `.m3u8` videos to specific songs or albums within ViviMusic. It is powered by Vercel, meaning any changes you push to this repository are instantly deployed and served via a lightning-fast global CDN. 
 
 ## How to add a new Canvas
 
 If you find a cool visualizer or music video and want to display it in the background of ViviMusic whenever a specific song plays, follow these steps:
 
 ### 1. Upload your Video
-Upload your `.mp4` file into either the `Song/` or `Album/` directories within this repository. 
-*Example: `Song/dracula_visualizer.mp4`*
+Upload your `.m3u8` file into either the `Song/` or `Album/` directories within this repository. 
+*Example: `Song/dracula_visualizer.m3u8`*
 
 ### 2. Update `canvas.json`
 Open the `canvas.json` file located in the root of the repository. You will add a new block to the `"items"` array mapping the exact song name and artist to your new video URL.
@@ -24,7 +24,7 @@ Make sure your URL points to your deployed Vercel domain!
     {
       "song": "Song Title",
       "artist": "Artist Name",
-      "url": "https://vivimusicanvas.vercel.app/Song/your_video.mp4"
+      "url": "https://vivimusicanvas.vercel.app/Song/your_video.m3u8"
     }
   ]
 }

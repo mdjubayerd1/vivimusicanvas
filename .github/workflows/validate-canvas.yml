@@ -9,6 +9,8 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
@@ -16,4 +18,13 @@ jobs:
         with:
           node-version: '18'
       - name: Run Validation Script
+        id: run-validation
         run: node scripts/validate_canvas.js
+        continue-on-error: true # Allow comment step to run even if script fails
+      - name: Post PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: validation_report.md
+      - name: Fail if validation failed
+        if: steps.run-validation.outcome == 'failure'
+        run: exit 1
